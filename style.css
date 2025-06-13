@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(223, 224, 226);
+  background-color: rgb(25, 9, 51);
   font-family: 'Inter', sans-serif;
 }
 
@@ -16,5 +16,6 @@ h2 {
 p {
   text-align: center;
   font-size: 18px;
+  color: rgb(223, 224, 226);
 }
   
