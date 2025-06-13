@@ -4,17 +4,17 @@ body {
 }
 
 h1 {
-  text-allign: center;
-  color: rbg(5, 102, 141);
+  text-align: center;
+  color: rgb(5, 102, 141);
 }
 
 h2 {
-  text-allign: center;
-  color: 255, 16, 83;
+  text-align: center;
+  color: rgb(255, 16, 83);
 }
 
 p {
-  text-allign: center;
+  text-align: center;
   font-size: 18px;
 }
   
