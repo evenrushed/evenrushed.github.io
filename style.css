@@ -1,1 +1,20 @@
+body {
+  background-color: rgb(223, 224, 226);
+  font-family: 'Inter', sans-serif;
+}
 
+h1 {
+  text-allign: center;
+  color: rbg(5, 102, 141);
+}
+
+h2 {
+  text-allign: center;
+  color: 255, 16, 83;
+}
+
+p {
+  text-allign: center;
+  font-size: 18px;
+}
+  
