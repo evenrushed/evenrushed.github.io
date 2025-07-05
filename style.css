@@ -1,21 +1,16 @@
 body {
-  background-color: rgb(25, 9, 51);
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(72, 67, 73);
   font-family: 'Inter', sans-serif;
-}
-
-h1 {
-  text-align: center;
-  color: rgb(5, 102, 141);
 }
 
 h2 {
   text-align: center;
-  color: rgb(255, 16, 83);
+  color: rgb(247, 240, 240);
 }
 
-p {
-  text-align: center;
-  font-size: 18px;
-  color: rgb(223, 224, 226);
-}
-  
