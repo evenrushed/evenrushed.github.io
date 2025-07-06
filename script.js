@@ -22,6 +22,8 @@ function updateButtonStyle(totalSeconds) {
     } else if (totalSeconds < 3600) { // under 1 hour
         btn.classList.add('time-60-3600');
     } else if (totalSeconds < 43200 ) { // under 12 hours
+        btn.classList.add('time-3600-43200');
+    } else if (totalSeconds < 86400 ) { // under 24 hours
         btn.classList.add('time-43200-86400');
     } else { // 1 day
         btn.classList.add('time-86400-plus');
