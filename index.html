@@ -177,10 +177,14 @@
             font-size: 14px;
         }
         
-        /* Command Input - Row 1, Column 2 */
-        .command-input {
+        /* Command Section - Row 1, Column 2 */
+        .command-section {
             grid-column: 2;
             grid-row: 1;
+            position: relative;
+        }
+        
+        .command-input {
             width: 100%;
             background: var(--background);
             border: 2px solid var(--secondary);
@@ -196,6 +200,32 @@
         .command-input:focus {
             outline: none;
             border-color: var(--accent-cyan);
+        }
+        
+        /* Command Output */
+        .command-output {
+            background: var(--background);
+            border: 1px solid var(--secondary);
+            border-radius: 8px;
+            padding: 15px;
+            font-family: 'Monaco', monospace;
+            font-size: 13px;
+            color: var(--accent-cyan);
+            white-space: pre-wrap;
+            min-height: 60px;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            line-height: 1.5;
+        }
+        
+        .command-output.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .command-output:empty {
+            display: none;
         }
         
         /* About Me Card - Row 2, Column 2 */
@@ -339,7 +369,7 @@
                 grid-row: 1;
             }
             
-            .command-input {
+            .command-section {
                 grid-column: 1;
                 grid-row: 2;
             }
@@ -413,13 +443,16 @@
                 <div class="profile-location">📍 Your City, Country</div>
             </div>
             
-            <!-- Command Input - Row 1, Column 2 -->
-            <input 
-                type="text" 
-                class="command-input" 
-                placeholder="Type a command... (try /help)"
-                onkeypress="handleCommand(event)"
-            >
+            <!-- Command Section - Row 1, Column 2 -->
+            <div class="command-section">
+                <input 
+                    type="text" 
+                    class="command-input" 
+                    placeholder="Type a command... (try /help)"
+                    onkeypress="handleCommand(event)"
+                >
+                <div id="commandOutput" class="command-output"></div>
+            </div>
             
             <!-- About Me Card - Row 2, Column 2 -->
             <div class="card about-card">
@@ -560,7 +593,7 @@
         
         // Command System
         const commands = {
-            '/help': () => 'Available commands: /help, /mood, /quote, /time, /focus, /surprise, /clear',
+            '/help': () => 'Available commands:\n/help - Show this help\n/mood - Show current mood\n/quote - Get inspiring quote\n/time - Show current time\n/focus - Activate focus mode\n/surprise - Get a surprise\n/clear - Clear output',
             '/mood': () => {
                 const moods = ['🚀 Productive', '😎 Chill', '🔥 Motivated', '🌟 Creative', '⚡ Energized', '🧘 Zen'];
                 return `Current mood: ${moods[Math.floor(Math.random() * moods.length)]}`;
@@ -575,7 +608,7 @@
                 return quotes[Math.floor(Math.random() * quotes.length)];
             },
             '/time': () => `Current time: ${new Date().toLocaleTimeString()}`,
-            '/focus': () => '🎯 Focus mode activated! Minimize distractions and code away!',
+            '/focus': () => '🎯 Focus mode activated!\nMinimize distractions and code away!',
             '/surprise': () => {
                 const surprises = [
                     '🎉 You\'re awesome!',
@@ -586,15 +619,23 @@
                 ];
                 return surprises[Math.floor(Math.random() * surprises.length)];
             },
-            '/clear': () => ''
+            '/clear': () => {
+                const output = document.getElementById('commandOutput');
+                output.textContent = '';
+                output.classList.remove('show');
+                return '';
+            }
         };
         
         function handleCommand(event) {
             if (event.key === 'Enter') {
                 const input = event.target;
                 const command = input.value.toLowerCase().trim();
-                runCommand(command);
-                input.value = '';
+                
+                if (command) {
+                    runCommand(command);
+                    input.value = '';
+                }
             }
         }
         
@@ -603,20 +644,25 @@
             
             if (commands[command]) {
                 const result = commands[command]();
+                
+                if (command === '/clear') {
+                    return;
+                }
+                
                 output.textContent = `> ${command}\n${result}`;
                 output.classList.add('show');
                 
-                // Hide output after 5 seconds
+                // Hide output after 8 seconds
                 setTimeout(() => {
                     output.classList.remove('show');
-                }, 5000);
-            } else if (command.trim() !== '') {
+                }, 8000);
+            } else {
                 output.textContent = `> ${command}\nCommand not found. Type /help for available commands.`;
                 output.classList.add('show');
                 
                 setTimeout(() => {
                     output.classList.remove('show');
-                }, 3000);
+                }, 5000);
             }
             
             // Flash effect on input
