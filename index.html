@@ -97,7 +97,7 @@
             border-bottom-color: var(--accent-cyan);
         }
         
-        /* Main Grid */
+        /* Main Grid - Exact Layout */
         .main-grid {
             display: grid;
             grid-template-columns: 280px 1fr;
@@ -128,7 +128,7 @@
             font-weight: 600;
         }
         
-        /* Profile Card */
+        /* Profile Card - Spans 2 rows */
         .profile-card {
             grid-column: 1;
             grid-row: 1 / span 2;
@@ -177,9 +177,31 @@
             font-size: 14px;
         }
         
-        /* About Me Card */
+        /* Command Input - Row 1, Column 2 */
+        .command-input {
+            grid-column: 2;
+            grid-row: 1;
+            width: 100%;
+            background: var(--background);
+            border: 2px solid var(--secondary);
+            border-radius: 8px;
+            padding: 12px 15px;
+            color: var(--text-light);
+            font-family: 'Monaco', monospace;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+            margin-bottom: 15px;
+        }
+        
+        .command-input:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+        }
+        
+        /* About Me Card - Row 2, Column 2 */
         .about-card {
-            grid-column: span 2;
+            grid-column: 2;
+            grid-row: 2;
         }
         
         .about-text {
@@ -187,9 +209,10 @@
             line-height: 1.7;
         }
         
-        /* Goals Card */
+        /* Goals Card - Row 3, Column 1 */
         .goals-card {
-            grid-column: span 1;
+            grid-column: 1;
+            grid-row: 3;
         }
         
         .goal-item {
@@ -219,26 +242,89 @@
             font-size: 14px;
         }
         
-        /* Command Strip */
-        .command-card {
-            grid-column: span 1;
+        /* Recent Projects Card - Row 3, Column 2 */
+        .projects-card {
+            grid-column: 2;
+            grid-row: 3;
         }
         
-        .command-input {
-            width: 100%;
-            background: var(--background);
-            border: 2px solid var(--secondary);
-            border-radius: 8px;
-            padding: 12px 15px;
+        .project-item {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 3px solid var(--accent-green);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 0 8px 8px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .project-item:hover {
+            background: rgba(16, 185, 129, 0.2);
+            transform: translateX(5px);
+        }
+        
+        .project-title {
+            font-weight: 600;
             color: var(--text-light);
-            font-family: 'Monaco', monospace;
-            font-size: 14px;
-            transition: border-color 0.3s ease;
+            margin-bottom: 5px;
         }
         
-        .command-input:focus {
-            outline: none;
-            border-color: var(--accent-cyan);
+        .project-description {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        
+        .tech-tag {
+            background: var(--secondary);
+            color: var(--accent-cyan);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+        }
+        
+        /* Quick Stats Card - Row 4, Spans full width */
+        .stats-card {
+            grid-column: 1 / span 2;
+            grid-row: 4;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+        }
+        
+        .stat-item {
+            background: rgba(138, 243, 255, 0.1);
+            border: 1px solid var(--secondary);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-item:hover {
+            background: rgba(138, 243, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 5px;
         }
         
         /* Responsive */
@@ -253,7 +339,7 @@
                 grid-row: 1;
             }
             
-            .command-strip {
+            .command-input {
                 grid-column: 1;
                 grid-row: 2;
             }
@@ -288,19 +374,6 @@
             .header-right {
                 gap: 20px;
             }
-            
-            .main-grid {
-                grid-template-columns: 1fr;
-                grid-template-rows: auto;
-            }
-            
-            .profile-card {
-                grid-row: span 1;
-            }
-            
-            .about-card,             .goals-card, .command-strip {
-                grid-column: span 1;
-            }
         }
         
         /* Light mode styles (when toggled) */
@@ -331,7 +404,7 @@
         
         <!-- Main Content Grid -->
         <main class="main-grid">
-            <!-- Profile Info Card -->
+            <!-- Profile Info Card - Row 1-2, Column 1 -->
             <div class="card profile-card">
                 <div class="profile-img">YN</div>
                 <div class="profile-name">Your Name</div>
@@ -340,15 +413,15 @@
                 <div class="profile-location">📍 Your City, Country</div>
             </div>
             
-            <!-- Command Strip -->
+            <!-- Command Input - Row 1, Column 2 -->
             <input 
                 type="text" 
-                class="command-input command-strip" 
+                class="command-input" 
                 placeholder="Type a command... (try /help)"
                 onkeypress="handleCommand(event)"
             >
             
-            <!-- About Me Card -->
+            <!-- About Me Card - Row 2, Column 2 -->
             <div class="card about-card">
                 <h3>About Me</h3>
                 <p class="about-text">
@@ -361,7 +434,7 @@
                 </p>
             </div>
             
-            <!-- Goals Card -->
+            <!-- Goals Card - Row 3, Column 1 -->
             <div class="card goals-card">
                 <h3>Current Goals</h3>
                 
@@ -391,13 +464,91 @@
                 </div>
             </div>
             
-            <!-- Command Strip -->
-            <input 
-                type="text" 
-                class="command-input command-strip" 
-                placeholder="Type a command... (try /help)"
-                onkeypress="handleCommand(event)"
-            >
+            <!-- Recent Projects Card - Row 3, Column 2 -->
+            <div class="card projects-card">
+                <h3>Recent Projects</h3>
+                
+                <!-- PROJECT 1 - Easy to edit -->
+                <div class="project-item">
+                    <div class="project-title">Portfolio Website</div>
+                    <div class="project-description">Personal portfolio showcasing my development skills and projects</div>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                </div>
+                
+                <!-- PROJECT 2 - Easy to edit -->
+                <div class="project-item">
+                    <div class="project-title">Task Manager App</div>
+                    <div class="project-description">Full-stack productivity app with real-time collaboration</div>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                    </div>
+                </div>
+                
+                <!-- PROJECT 3 - Easy to edit -->
+                <div class="project-item">
+                    <div class="project-title">Weather Dashboard</div>
+                    <div class="project-description">Clean weather app with location-based forecasts</div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Vue.js</span>
+                        <span class="tech-tag">API</span>
+                        <span class="tech-tag">Charts.js</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Stats Card - Row 4, Full Width -->
+            <div class="card stats-card">
+                <h3>Quick Stats</h3>
+                <div class="stats-grid">
+                    <!-- STAT 1 - Easy to edit -->
+                    <div class="stat-item">
+                        <span class="stat-number">47,293</span>
+                        <div class="stat-label">Lines of Code Written</div>
+                    </div>
+                    
+                    <!-- STAT 2 - Easy to edit -->
+                    <div class="stat-item">
+                        <span class="stat-number">23</span>
+                        <div class="stat-label">Projects Completed This Year</div>
+                    </div>
+                    
+                    <!-- STAT 3 - Easy to edit -->
+                    <div class="stat-item">
+                        <span class="stat-number">8</span>
+                        <div class="stat-label">Languages Mastered</div>
+                    </div>
+                    
+                    <!-- STAT 4 - Easy to edit -->
+                    <div class="stat-item">
+                        <span class="stat-number">1,247</span>
+                        <div class="stat-label">League Ranked Games Played</div>
+                    </div>
+                    
+                    <!-- STAT 5 - Easy to edit -->
+                    <div class="stat-item">
+                        <span class="stat-number">342</span>
+                        <div class="stat-label">Boba Consumed</div>
+                    </div>
+                    
+                    <!-- STAT 6 - Easy to edit -->
+                    <div class="stat-item">
+                        <span class="stat-number">14</span>
+                        <div class="stat-label">Books Read</div>
+                    </div>
+                    
+                    <!-- STAT 7 - Easy to edit -->
+                    <div class="stat-item">
+                        <span class="stat-number">2,847</span>
+                        <div class="stat-label">AI Requests</div>
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
     
