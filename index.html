@@ -408,7 +408,7 @@
             <div class="card profile-card">
                 <div class="profile-img">YN</div>
                 <div class="profile-name">Your Name</div>
-                <div class="profile-title">Software Developer</div>
+                <div class="profile-title">Computer Engineer</div>
                 <div class="profile-email">your.email@example.com</div>
                 <div class="profile-location">📍 Your City, Country</div>
             </div>
@@ -425,12 +425,10 @@
             <div class="card about-card">
                 <h3>About Me</h3>
                 <p class="about-text">
-                    Hey there! 👋 I'm a passionate developer who loves building things that live on the internet. 
-                    I enjoy turning complex problems into simple, beautiful solutions. When I'm not coding, 
-                    you can find me exploring new technologies, reading sci-fi novels, or hiking local trails.
+                    Yeah I totally wrote all of this myself... right?
                     <br><br>
-                    I believe in writing clean code, continuous learning, and the power of good coffee. 
-                    Always excited to collaborate on interesting projects and meet fellow creators!
+                    I believe in writing clean, cohhernt, and honest code. Somtimes, I believe in continuous learning, and I can never turn down the power of good coffee. 
+                    Why am I here?
                 </p>
             </div>
             
@@ -601,12 +599,29 @@
         }
         
         function runCommand(command) {
-            // For now, just show a subtle notification or console log
-            console.log(`Command executed: ${command}`);
+            const output = document.getElementById('commandOutput');
             
-            // Optional: Show a brief flash effect on the input
+            if (commands[command]) {
+                const result = commands[command]();
+                output.textContent = `> ${command}\n${result}`;
+                output.classList.add('show');
+                
+                // Hide output after 5 seconds
+                setTimeout(() => {
+                    output.classList.remove('show');
+                }, 5000);
+            } else if (command.trim() !== '') {
+                output.textContent = `> ${command}\nCommand not found. Type /help for available commands.`;
+                output.classList.add('show');
+                
+                setTimeout(() => {
+                    output.classList.remove('show');
+                }, 3000);
+            }
+            
+            // Flash effect on input
             const input = document.querySelector('.command-input');
-            input.style.borderColor = 'var(--accent-green)';
+            input.style.borderColor = 'var(--accent-cyan)';
             setTimeout(() => {
                 input.style.borderColor = 'var(--secondary)';
             }, 300);
