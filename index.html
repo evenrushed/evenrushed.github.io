@@ -100,8 +100,8 @@
         /* Main Grid */
         .main-grid {
             display: grid;
-            grid-template-columns: 280px 1fr 280px;
-            grid-template-rows: auto auto;
+            grid-template-columns: 280px 1fr;
+            grid-template-rows: auto auto auto;
             gap: 25px;
             align-items: start;
         }
@@ -130,7 +130,8 @@
         
         /* Profile Card */
         .profile-card {
-            grid-row: span 2;
+            grid-column: 1;
+            grid-row: 1;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -242,23 +243,28 @@
         /* Responsive */
         @media (max-width: 1024px) {
             .main-grid {
-                grid-template-columns: 250px 1fr;
-                grid-template-rows: auto auto auto;
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto auto;
             }
             
-            .about-card {
-                grid-column: 2;
+            .profile-card {
+                grid-column: 1;
                 grid-row: 1;
             }
             
-            .goals-card {
-                grid-column: 1 / span 2;
+            .command-strip {
+                grid-column: 1;
                 grid-row: 2;
             }
             
-            .command-card {
-                grid-column: 1 / span 2;
+            .about-card {
+                grid-column: 1;
                 grid-row: 3;
+            }
+            
+            .goals-card {
+                grid-column: 1;
+                grid-row: 4;
             }
         }
         
