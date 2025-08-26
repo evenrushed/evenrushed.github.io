@@ -97,6 +97,358 @@
             border-bottom-color: var(--accent-cyan);
         }
         
+        /* Main Grid */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            grid-template-rows: auto auto auto auto;
+            gap: 25px;
+            align-items: start;
+        }
+        
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid var(--secondary);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            background: var(--card-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(138, 243, 255, 0.1);
+        }
+        
+        .card h3 {
+            color: var(--accent-cyan);
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        /* Profile Card */
+        .profile-card {
+            grid-column: 1;
+            grid-row: 1 / span 2;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-over));
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--background);
+        }
+        
+        .profile-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--snow-white);
+            margin-bottom: 5px;
+        }
+        
+        .profile-title {
+            color: var(--accent-cyan);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .profile-email {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .profile-location {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        
+        /* Command Section - Row 1, Column 2 */
+        .command-section {
+            grid-column: 2;
+            grid-row: 1;
+            position: relative;
+        }
+        
+        .command-input {
+            width: 100%;
+            background: var(--background);
+            border: 2px solid var(--secondary);
+            border-radius: 8px;
+            padding: 12px 15px;
+            color: var(--text-light);
+            font-family: 'Monaco', monospace;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+            margin-bottom: 15px;
+        }
+        
+        .command-input:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+        }
+        
+        /* Command Output */
+        .command-output {
+            background: var(--background);
+            border: 1px solid var(--secondary);
+            border-radius: 8px;
+            padding: 15px;
+            font-family: 'Monaco', monospace;
+            font-size: 13px;
+            color: var(--accent-cyan);
+            white-space: pre-wrap;
+            min-height: 60px;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            line-height: 1.5;
+        }
+        
+        .command-output.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .command-output:empty {
+            display: none;
+        }
+        
+        /* About Me Card - Row 2, Column 2 */
+        .about-card {
+            grid-column: 2;
+            grid-row: 2;
+        }
+        
+        .about-text {
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+        
+        /* Goals Card - Row 3, Column 1 */
+        .goals-card {
+            grid-column: 1;
+            grid-row: 3;
+        }
+        
+        .goal-item {
+            background: rgba(138, 243, 255, 0.1);
+            border-left: 3px solid var(--accent-cyan);
+            padding: 12px 15px;
+            margin: 10px 0;
+            border-radius: 0 6px 6px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .goal-item:hover {
+            background: rgba(138, 243, 255, 0.2);
+            transform: translateX(5px);
+        }
+        
+        .goal-category {
+            font-size: 12px;
+            color: var(--accent-over);
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        
+        .goal-text {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+        
+        /* Recent Projects Card - Row 3, Column 2 */
+        .projects-card {
+            grid-column: 2;
+            grid-row: 3;
+        }
+        
+        .project-item {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 3px solid var(--accent-over);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 0 8px 8px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .project-item:hover {
+            background: rgba(16, 185, 129, 0.2);
+            transform: translateX(5px);
+        }
+        
+        .project-title {
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+        
+        .project-description {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        
+        .tech-tag {
+            background: var(--secondary);
+            color: var(--accent-cyan);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+        }
+        
+        /* Quick Stats Card - Row 4, Spans full width */
+        .stats-card {
+            grid-column: 1 / span 2;
+            grid-row: 4;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+        }
+        
+        .stat-item {
+            background: rgba(138, 243, 255, 0.1);
+            border: 1px solid var(--secondary);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-item:hover {
+            background: rgba(138, 243, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            display: block;
+        }
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Site</title>
+    <style>
+        :root {
+            /* Custom Color Scheme */
+            --primary: #1f2937;     /* Dark Gray */
+            --secondary: #374151;   /* Medium Gray */
+            --accent-over: #A78BFA; /* purple */
+            --accent-cyan: #8AF3FF;  /* Custom Cyan */
+            --background: #111827;   /* Very Dark */
+            --snow-white: #F7F0F0;   /* Custom Snow White */
+            --text-light: #f9fafb;
+            --text-muted: #9ca3af;
+            --card-bg: #1f2937;
+            --card-hover: #374151;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-light);
+            background: var(--background);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--secondary);
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .home-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--snow-white);
+        }
+        
+        .theme-toggle {
+            background: var(--secondary);
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        
+        .theme-toggle:hover {
+            background: var(--accent-cyan);
+            color: var(--background);
+        }
+        
+        .header-right {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .header-link {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            padding: 8px 0;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .header-link:hover {
+            color: var(--accent-cyan);
+            border-bottom-color: var(--accent-cyan);
+        }
+        
         /* Main Grid - Exact Layout */
         .main-grid {
             display: grid;
@@ -351,6 +703,346 @@
             display: block;
         }
         
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto auto auto auto;
+            }
+            
+            .profile-card {
+                grid-column: 1;
+                grid-row: 1;
+            }
+            
+            .command-section {
+                grid-column: 1;
+                grid-row: 2;
+            }
+            
+            .about-card {
+                grid-column: 1;
+                grid-row: 3;
+            }
+            
+            .goals-card {
+                grid-column: 1;
+                grid-row: 4;
+            }
+            
+            .projects-card {
+                grid-column: 1;
+                grid-row: 5;
+            }
+            
+            .stats-card {
+                grid-column: 1;
+                grid-row: 6;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .header-right {
+                gap: 20px;
+            }
+        }
+        
+        /* Light mode styles (when toggled) */
+        body.light-mode {
+            --primary: #f8fafc;
+            --secondary: #e2e8f0;
+            --background: var(--snow-white);
+            --text-light: #1f2937;
+            --text-muted: #6b7280;
+            --card-bg: #ffffff;
+            --card-hover: #f8fafc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <div class="home-text">> even</div>
+                <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+            </div>
+            <div class="header-right">
+                <a href="https://www.google.com/" class="header-link">Blog</a>
+                <a href="https://www.google.com/" class="header-link">Resume</a>
+            </div>
+        </header>
+        
+        <!-- Main Content Grid -->
+        <main class="main-grid">
+            <!-- Profile Info Card - Row 1-2, Column 1 -->
+            <div class="card profile-card">
+                <div class="profile-img">YN</div>
+                <div class="profile-name">Evan Rushing</div>
+                <div class="profile-title">Computer Engineer</div>
+                <div class="profile-email">thisisevanr18@gmail.com</div>
+                <div class="profile-location">College Station, Texas</div>
+            </div>
+            
+            <!-- Command Section - Row 1, Column 2 -->
+            <div class="command-section">
+                <input 
+                    type="text" 
+                    class="command-input" 
+                    placeholder="Type a command... (try /help)"
+                    onkeypress="handleCommand(event)"
+                >
+                <div id="commandOutput" class="command-output"></div>
+            </div>
+            
+            <!-- About Me Card - Row 2, Column 2 -->
+            <div class="card about-card">
+                <h3>About Me</h3>
+                <p class="about-text">
+                    Yeah I totally wrote all of this myself... right?
+                    <br><br>
+                    I believe in writing clean, cohhernt, and honest code. Somtimes, I believe in continuous learning, and I can never turn down the power of good coffee. 
+                    Why am I here?
+                </p>
+            </div>
+            
+            <!-- Goals Card - Row 3, Column 1 -->
+            <div class="card goals-card">
+                <h3>Current Goals</h3>
+                
+                <div class="goal-item">
+                    <div class="goal-category">This Month</div>
+                    <div class="goal-text">Complete React portfolio project</div>
+                </div>
+                
+                <div class="goal-item">
+                    <div class="goal-category">This Month</div>
+                    <div class="goal-text">Read 2 tech books</div>
+                </div>
+                
+                <div class="goal-item">
+                    <div class="goal-category">This Year</div>
+                    <div class="goal-text">Launch personal SaaS project</div>
+                </div>
+                
+                <div class="goal-item">
+                    <div class="goal-category">This Year</div>
+                    <div class="goal-text">Contribute to 5 open source projects</div>
+                </div>
+                
+                <div class="goal-item">
+                    <div class="goal-category">Career</div>
+                    <div class="goal-text">Master TypeScript & Node.js</div>
+                </div>
+            </div>
+            
+            <!-- Recent Projects Card - Row 3, Column 2 -->
+            <div class="card projects-card">
+                <h3>Recent Projects</h3>
+                
+                <!-- PROJECT 1 - Easy to edit -->
+                <div class="project-item">
+                    <div class="project-title">Portfolio Website</div>
+                    <div class="project-description">Personal portfolio showcasing my development skills and projects</div>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                </div>
+                
+                <!-- PROJECT 2 - Easy to edit -->
+                <div class="project-item">
+                    <div class="project-title">Task Manager App</div>
+                    <div class="project-description">Full-stack productivity app with real-time collaboration</div>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                    </div>
+                </div>
+                
+                <!-- PROJECT 3 - Easy to edit -->
+                <div class="project-item">
+                    <div class="project-title">Weather Dashboard</div>
+                    <div class="project-description">Clean weather app with location-based forecasts</div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Vue.js</span>
+                        <span class="tech-tag">API</span>
+                        <span class="tech-tag">Charts.js</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Stats Card - Row 4, Full Width -->
+            <div class="card stats-card">
+                <div class="stats-grid">
+                    <!-- STAT 1 - Easy to edit -->
+                    <div class="stat-item">
+                        <span class="stat-number">1</span>
+                        <div class="stat-label">Projects Completed This Year</div>
+                    </div>
+                    
+                    <!-- STAT 2 - Easy to edit -->
+                    <div class="stat-item">
+                        <span class="stat-number">0</span>
+                        <div class="stat-label">Languages Mastered</div>
+                    </div>
+                    
+                    <!-- STAT 3 - Easy to edit -->
+                    <div class="stat-item">
+                        <span class="stat-number">300</span>
+                        <div class="stat-label">League Ranked Games Played</div>
+                    </div>
+                    
+                    <!-- STAT 4 - Easy to edit -->
+                    <div class="stat-item">
+                        <span class="stat-number">26</span>
+                        <div class="stat-label">Boba Consumed</div>
+                    </div>
+                    
+                    <!-- STAT 5 - Easy to edit -->
+                    <div class="stat-item">
+                        <span class="stat-number">3</span>
+                        <div class="stat-label">Books Read</div>
+                    </div>
+                    
+                    <!-- STAT 6 - Easy to edit -->
+                    <div class="stat-item">
+                        <span class="stat-number">TOO MANY</span>
+                        <div class="stat-label">AI Requests</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        // Theme Toggle
+        function toggleTheme() {
+            const body = document.body;
+            const button = document.querySelector('.theme-toggle');
+            
+            body.classList.toggle('light-mode');
+            
+            if (body.classList.contains('light-mode')) {
+                button.textContent = '☀️';
+            } else {
+                button.textContent = '🌙';
+            }
+        }
+        
+        // Command System
+        const commands = {
+            '/help': () => 'Available commands:\n/help - Show this help\n/mood - Show current mood\n/quote - Get inspiring quote\n/time - Show current time\n/focus - Activate focus mode\n/surprise - Get a surprise\n/clear - Clear output',
+            '/mood': () => {
+                const moods = ['🚀 Productive', '😎 Chill', '🔥 Motivated', '🌟 Creative', '⚡ Energized', '🧘 Zen'];
+                return `Current mood: ${moods[Math.floor(Math.random() * moods.length)]}`;
+            },
+            '/quote': () => {
+                const quotes = [
+                    '"Code is poetry." - Unknown',
+                    '"The best time to plant a tree was 20 years ago. The second best time is now." - Chinese Proverb',
+                    '"First, solve the problem. Then, write the code." - John Johnson',
+                    '"Any fool can write code that a computer can understand. Good programmers write code that humans can understand." - Martin Fowler'
+                ];
+                return quotes[Math.floor(Math.random() * quotes.length)];
+            },
+            '/time': () => `Current time: ${new Date().toLocaleTimeString()}`,
+            '/focus': () => '🎯 Focus mode activated!\nMinimize distractions and code away!',
+            '/surprise': () => {
+                const surprises = [
+                    '🎉 You\'re awesome!',
+                    '🌈 Keep being creative!',
+                    '⭐ You\'ve got this!',
+                    '🚀 Ready for takeoff!',
+                    '💎 You\'re a gem!'
+                ];
+                return surprises[Math.floor(Math.random() * surprises.length)];
+            },
+            '/clear': () => {
+                const output = document.getElementById('commandOutput');
+                output.textContent = '';
+                output.classList.remove('show');
+                return '';
+            }
+        };
+        
+        function handleCommand(event) {
+            if (event.key === 'Enter') {
+                const input = event.target;
+                const command = input.value.toLowerCase().trim();
+                
+                if (command) {
+                    runCommand(command);
+                    input.value = '';
+                }
+            }
+        }
+        
+        function runCommand(command) {
+            const output = document.getElementById('commandOutput');
+            
+            if (commands[command]) {
+                const result = commands[command]();
+                
+                if (command === '/clear') {
+                    return;
+                }
+                
+                output.textContent = `> ${command}\n${result}`;
+                output.classList.add('show');
+                
+                // Hide output after 8 seconds
+                setTimeout(() => {
+                    output.classList.remove('show');
+                }, 8000);
+            } else {
+                output.textContent = `> ${command}\nCommand not found. Type /help for available commands.`;
+                output.classList.add('show');
+                
+                setTimeout(() => {
+                    output.classList.remove('show');
+                }, 5000);
+            }
+            
+            // Flash effect on input
+            const input = document.querySelector('.command-input');
+            input.style.borderColor = 'var(--accent-cyan)';
+            setTimeout(() => {
+                input.style.borderColor = 'var(--secondary)';
+            }, 300);
+        }
+        
+        // Add some entrance animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.6s ease';
+                
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>
         .stat-label {
             font-size: 12px;
             color: var(--text-muted);
